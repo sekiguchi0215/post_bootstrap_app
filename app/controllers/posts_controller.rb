@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create!(post_params)
+    @post = Post.new(post_params)
     if @post.save
       redirect_to @post, notice: "投稿しました。"
     else
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update!(post_params)
+    if @post.update(post_params)
       redirect_to post, notice: "更新しました。"
     else
       flash.now[:alert] = "更新に失敗しました。"
